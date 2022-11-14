@@ -31,9 +31,11 @@ NEEDPW {
 
     if (substr(VAL,1,1) == "@") { VAL=("\\" VAL); }
     if (substr(VAL,1,1) == "%") { VAL=("\\" VAL); }
+    if ((PRE) && (NR != 1)) {
+        KEY=sprintf("%s%s", PRE, KEY)
+    }
 
     printf "%s=%s\n", KEY, VAL |& CMD;
-
 
 }
 END {
